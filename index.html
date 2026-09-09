@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Immunology · study companion</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f4fc;
+      background: linear-gradient(145deg, #eef3fa 0%, #d9e2ef 100%);
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      color: #13294b;
+    }
+
+    .app-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      margin-bottom: 2.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 1.2rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 20px rgba(0, 20, 40, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .header h1 {
+      font-weight: 500;
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header h1 i {
+      color: #2a6b9e;
+      font-size: 2rem;
+    }
+
+    .header .sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #1f4970;
+      background: rgba(42, 107, 158, 0.08);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(42, 107, 158, 0.1);
+    }
+
+    .header .sub i {
+      margin-right: 6px;
+      color: #2a6b9e;
+    }
+
+    /* section titles */
+    .section-title {
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: -0.3px;
+      margin: 2.2rem 0 1.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #0a2a44;
+      border-bottom: 2px solid rgba(42, 107, 158, 0.15);
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title i {
+      color: #2a6b9e;
+      font-size: 1.5rem;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .section-title small {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #3d6a93;
+      margin-left: 6px;
+    }
+
+    /* card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* card */
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 1.5rem 1.4rem 1.4rem 1.4rem;
+      box-shadow: 0 8px 28px rgba(0, 20, 40, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 30, 60, 0.10);
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .card .card-icon {
+      font-size: 2rem;
+      color: #1f5a88;
+      margin-bottom: 0.4rem;
+    }
+
+    .card h3 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: -0.2px;
+      color: #0d2b47;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card h3 .badge {
+      font-size: 0.65rem;
+      font-weight: 400;
+      background: rgba(42, 107, 158, 0.12);
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      color: #1f5a88;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(42, 107, 158, 0.08);
+    }
+
+    .card .desc {
+      font-size: 0.95rem;
+      font-weight: 350;
+      line-height: 1.5;
+      color: #1e3b5a;
+      margin-top: 0.6rem;
+      flex: 1;
+    }
+
+    .card .desc i {
+      color: #2a6b9e;
+      margin-right: 4px;
+      opacity: 0.7;
+    }
+
+    .card .tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.6rem;
+    }
+
+    .card .tags span {
+      background: rgba(42, 107, 158, 0.06);
+      padding: 0.15rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      letter-spacing: 0.3px;
+      color: #1f4a72;
+      border: 1px solid rgba(42, 107, 158, 0.08);
+    }
+
+    .card .marker {
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: #3d6a93;
+      border-top: 1px solid rgba(0, 0, 0, 0.03);
+      padding-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card .marker i {
+      opacity: 0.5;
+      font-size: 0.7rem;
+    }
+
+    .sub-section {
+      margin-top: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-weight: 400;
+      color: #1f4a72;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-section i {
+      color: #2a6b9e;
+      font-size: 1rem;
+      width: 1.6rem;
+      text-align: center;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flex-row .card {
+      flex: 1 1 200px;
+    }
+
+    /* comparison cards (innate vs adaptive) */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .compare-grid .card {
+      border-left: 5px solid transparent;
+    }
+
+    .compare-grid .card.innate-card {
+      border-left-color: #4a8cba;
+    }
+
+    .compare-grid .card.adaptive-card {
+      border-left-color: #c77d4a;
+    }
+
+    @media (max-width: 700px) {
+      .compare-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    /* utility */
+    .mt-1 { margin-top: 0.5rem; }
+    .mb-1 { margin-bottom: 0.5rem; }
+
+    @media (max-width: 640px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 32px;
+        padding: 1.2rem 1.5rem;
+      }
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      .section-title {
+        font-size: 1.3rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #3d6a93;
+      opacity: 0.6;
+      border-top: 1px solid rgba(42, 107, 158, 0.08);
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+<div class="app-container">
+
+  <!-- header -->
+  <div class="header">
+    <h1><i class="fas fa-shield-virus"></i> immuno<span style="font-weight:300;">study</span></h1>
+    <span class="sub"><i class="fas fa-graduation-cap"></i> college level · innate & adaptive · T/B cells · lymphoid organs</span>
+  </div>
+
+  <!-- ========== INNATE vs ADAPTIVE ========== -->
+  <div class="section-title">
+    <i class="fas fa-balance-scale-left"></i> innate vs. adaptive immunity <small>two arms of the immune system</small>
+  </div>
+
+  <div class="compare-grid">
+    <!-- Innate card -->
+    <div class="card innate-card">
+      <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3>Innate immunity <span class="badge">non‑specific</span></h3>
+      <div class="desc">
+        <i class="fas fa-dot-circle"></i> First line of defense. Rapid response (minutes to hours). No immunological memory. Recognizes broad pathogen‑associated molecular patterns (PAMPs) via pattern‑recognition receptors (PRRs).
+      </div>
+      <div class="tags">
+        <span>fast</span><span>no memory</span><span>germline‑encoded</span><span>PRRs</span><span>physical barriers</span>
+      </div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> includes: skin, mucosa, phagocytes, NK cells, complement</div>
+    </div>
+
+    <!-- Adaptive card -->
+    <div class="card adaptive-card">
+      <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+      <h3>Adaptive immunity <span class="badge">specific</span></h3>
+      <div class="desc">
+        <i class="fas fa-dot-circle"></i> Slower onset (days to weeks), but highly specific. Generates immunological memory. Relies on B cells (antibodies) and T cells (cellular immunity). Clonal selection and expansion.
+      </div>
+      <div class="tags">
+        <span>memory</span><span>specificity</span><span>somatic recombination</span><span>clonal expansion</span><span>MHC restriction</span>
+      </div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> includes: humoral (B cells) & cell‑mediated (T cells)</div>
+    </div>
+  </div>
+
+  <!-- ==================== CELL TYPES ==================== -->
+  <div class="section-title">
+    <i class="fas fa-microscope"></i> cell types <small>innate & adaptive</small>
+  </div>
+
+  <div class="card-grid">
+    <!-- macrophage -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-fan"></i></div>
+      <h3>Macrophage <span class="badge">innate</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Phagocytic “big eater” – engulfs pathogens, dead cells, and debris. Antigen-presenting cell (APC) that bridges innate and adaptive immunity.</div>
+      <div class="tags"><span>phagocytosis</span><span>APC</span><span>cytokine secretion</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> tissue-resident · derived from monocytes</div>
+    </div>
+
+    <!-- dendritic cell -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-tree"></i></div>
+      <h3>Dendritic cell <span class="badge">innate</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Professional APC with dendritic processes. Highly efficient at presenting antigens to naïve T cells, initiating adaptive responses.</div>
+      <div class="tags"><span>APC</span><span>MHC II</span><span>co‑stimulation</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> skin, mucosa, lymphoid organs</div>
+    </div>
+
+    <!-- neutrophil -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-biohazard"></i></div>
+      <h3>Neutrophil <span class="badge">innate</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Most abundant white blood cell. Rapid responders to infection; phagocytic and releases neutrophil extracellular traps (NETs).</div>
+      <div class="tags"><span>phagocytosis</span><span>granules</span><span>NETs</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> blood · short half‑life</div>
+    </div>
+
+    <!-- NK cell -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-skull-crossbones"></i></div>
+      <h3>NK cell <span class="badge">innate</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Natural killer cell. Kills virus‑infected cells and tumor cells without prior sensitization. Regulated by activating/inhibitory receptors.</div>
+      <div class="tags"><span>cytotoxicity</span><span>perforin</span><span>IFN‑γ</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> blood · spleen · liver</div>
+    </div>
+  </div>
+
+  <!-- ==================== T & B CELLS ==================== -->
+  <div class="section-title">
+    <i class="fas fa-vial"></i> T & B lymphocytes <small>adaptive immunity</small>
+  </div>
+
+  <!-- sub: T cells -->
+  <div class="sub-section"><i class="fas fa-bolt"></i> T cells</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-user-md"></i></div>
+      <h3>Helper T (Th) <span class="badge">CD4⁺</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Orchestrates immune responses. Recognizes antigens on MHC II. Secretes interleukins to activate B cells, macrophages, and cytotoxic T cells.</div>
+      <div class="tags"><span>Th1</span><span>Th2</span><span>Th17</span><span>Treg</span></div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> central role in humoral & cell‑mediated immunity</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-user-slash"></i></div>
+      <h3>Cytotoxic T (Tc) <span class="badge">CD8⁺</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Kills infected cells (viral, intracellular bacteria) and tumor cells. Recognizes antigen on MHC I. Releases perforin and granzymes.</div>
+      <div class="tags"><span>perforin</span><span>granzyme</span><span>FasL</span></div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> essential for viral clearance</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+      <h3>Regulatory T (Treg) <span class="badge">CD4⁺CD25⁺</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Maintains immune tolerance and suppresses excessive immune responses. Expresses FoxP3. Secretes IL‑10 and TGF‑β.</div>
+      <div class="tags"><span>FoxP3</span><span>suppression</span><span>tolerance</span></div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> prevents autoimmunity</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-bolt"></i></div>
+      <h3>γδ T cell <span class="badge">unconventional</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> T‑cell receptor with γ and δ chains. Bridge innate and adaptive. Respond to stress molecules and lipids. Found in mucosa.</div>
+      <div class="tags"><span>mucosal</span><span>stress‑response</span><span>IL‑17</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> gut, skin, lungs</div>
+    </div>
+  </div>
+
+  <!-- sub: B cells -->
+  <div class="sub-section"><i class="fas fa-microbe"></i> B cells</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-droplet"></i></div>
+      <h3>B‑1 cell <span class="badge">innate‑like</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Produces natural IgM antibodies (low affinity, broad specificity). Located in pleural and peritoneal cavities. Minimal somatic hypermutation.</div>
+      <div class="tags"><span>natural antibody</span><span>IgM</span><span>TI antigens</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> peritoneal cavity</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-droplet"></i></div>
+      <h3>Follicular B‑2 <span class="badge">classical</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Conventional B cells in secondary lymphoid organs. Produce high‑affinity antibodies via germinal center reactions (affinity maturation, class switching).</div>
+      <div class="tags"><span>IgG, IgA, IgE</span><span>TD antigens</span><span>memory</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> lymph nodes · spleen · Peyer’s patches</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-droplet"></i></div>
+      <h3>Marginal zone B <span class="badge">innate‑like</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Rapid responders to blood‑borne pathogens. Low‑affinity IgM and IgG. Located in spleen marginal zone. Participate in T‑independent responses.</div>
+      <div class="tags"><span>spleen</span><span>IgM</span><span>TI‑2</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> splenic marginal zone</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-droplet"></i></div>
+      <h3>Plasma cell <span class="badge">effector</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Differentiated B cell that produces large quantities of antibodies (immunoglobulins). No longer expresses surface Ig or MHC II. Long‑lived in bone marrow.</div>
+      <div class="tags"><span>antibody factory</span><span>Ig secretion</span><span>memory</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> bone marrow · mucosa</div>
+    </div>
+  </div>
+
+  <!-- ==================== LYMPHOID ORGANS ==================== -->
+  <div class="section-title">
+    <i class="fas fa-map-signs"></i> lymphoid organs <small>primary & secondary</small>
+  </div>
+
+  <div class="card-grid">
+    <!-- bone marrow -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-bone"></i></div>
+      <h3>Bone marrow <span class="badge">primary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Hematopoietic stem cells give rise to all blood cells. B‑cell maturation occurs here. Site of plasma cell residence and antibody production.</div>
+      <div class="tags"><span>hematopoiesis</span><span>B‑cell maturation</span><span>stroma</span></div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> central for humoral immunity</div>
+    </div>
+
+    <!-- thymus -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-heart"></i></div>
+      <h3>Thymus <span class="badge">primary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Site of T‑cell maturation and selection (positive & negative). Cortical and medullary regions. Hassall’s corpuscles. Involutes with age.</div>
+      <div class="tags"><span>T‑cell education</span><span>positive selection</span><span>negative selection</span></div>
+      <div class="marker"><i class="fas fa-arrow-right"></i> essential for cell‑mediated immunity</div>
+    </div>
+
+    <!-- lymph nodes -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-circle-nodes"></i></div>
+      <h3>Lymph nodes <span class="badge">secondary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Filter lymph fluid. Contain B‑cell follicles, T‑cell zones, and germinal centers. Site of adaptive immune initiation and antigen presentation.</div>
+      <div class="tags"><span>follicles</span><span>germinal center</span><span>APC</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> cervical, axillary, inguinal, etc.</div>
+    </div>
+
+    <!-- spleen -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-filter"></i></div>
+      <h3>Spleen <span class="badge">secondary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Filters blood. Red pulp removes old RBCs; white pulp contains lymphoid tissue with marginal zone and periarteriolar lymphoid sheaths (PALS).</div>
+      <div class="tags"><span>white pulp</span><span>red pulp</span><span>marginal zone</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> left upper abdomen</div>
+    </div>
+
+    <!-- MALT / GALT -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-gut"></i></div>
+      <h3>MALT / GALT <span class="badge">secondary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Mucosa‑associated lymphoid tissue. Includes Peyer’s patches (intestine), tonsils, adenoids. First line of defense against mucosal pathogens.</div>
+      <div class="tags"><span>Peyer’s patches</span><span>tonsils</span><span>SIgA</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> gastrointestinal, respiratory, urogenital</div>
+    </div>
+
+    <!-- skin associated lymphoid tissue (SALT) -->
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-hand-sparkles"></i></div>
+      <h3>SALT <span class="badge">secondary</span></h3>
+      <div class="desc"><i class="fas fa-dot-circle"></i> Skin‑associated lymphoid tissue. Includes epidermal Langerhans cells (dendritic) and dermal T cells. Provides barrier immunity.</div>
+      <div class="tags"><span>Langerhans</span><span>dermal T</span><span>barrier</span></div>
+      <div class="marker"><i class="fas fa-map-pin"></i> epidermis / dermis</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer-note">
+    <i class="fas fa-book-open"></i> college immunology · quick reference · T&nbsp;&amp;&nbsp;B subsets · lymphoid architecture
+  </div>
+</div>
+</body>
+</html>
