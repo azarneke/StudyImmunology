@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Immunology · study companion</title>
-  <!-- Font Awesome for icons -->
+  <title>Immunology · quiz</title>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -16,14 +16,14 @@
     body {
       background: #f0f4fc;
       background: linear-gradient(145deg, #eef3fa 0%, #d9e2ef 100%);
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
       padding: 2rem 1.5rem;
       min-height: 100vh;
       color: #13294b;
     }
 
     .app-container {
-      max-width: 1300px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -34,10 +34,9 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem 1.8rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
       padding: 1.2rem 2rem;
       border-radius: 60px;
       box-shadow: 0 4px 20px rgba(0, 20, 40, 0.08);
@@ -47,7 +46,6 @@
     .header h1 {
       font-weight: 500;
       font-size: 1.9rem;
-      letter-spacing: -0.5px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -55,7 +53,6 @@
 
     .header h1 i {
       color: #2a6b9e;
-      font-size: 2rem;
     }
 
     .header .sub {
@@ -68,202 +65,202 @@
       border: 1px solid rgba(42, 107, 158, 0.1);
     }
 
-    .header .sub i {
-      margin-right: 6px;
-      color: #2a6b9e;
-    }
-
-    /* section titles */
-    .section-title {
-      font-weight: 400;
-      font-size: 1.6rem;
-      letter-spacing: -0.3px;
-      margin: 2.2rem 0 1.2rem 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #0a2a44;
-      border-bottom: 2px solid rgba(42, 107, 158, 0.15);
-      padding-bottom: 0.5rem;
-    }
-
-    .section-title i {
-      color: #2a6b9e;
-      font-size: 1.5rem;
-      width: 2rem;
-      text-align: center;
-    }
-
-    .section-title small {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: #3d6a93;
-      margin-left: 6px;
-    }
-
-    /* card grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* card */
-    .card {
-      background: rgba(255, 255, 255, 0.75);
+    /* controls */
+    .quiz-controls {
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 28px;
-      padding: 1.5rem 1.4rem 1.4rem 1.4rem;
-      box-shadow: 0 8px 28px rgba(0, 20, 40, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      border-radius: 32px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0, 30, 60, 0.10);
-      background: rgba(255, 255, 255, 0.85);
+    .quiz-controls .info {
+      font-size: 0.95rem;
+      color: #1f4970;
     }
 
-    .card .card-icon {
-      font-size: 2rem;
-      color: #1f5a88;
-      margin-bottom: 0.4rem;
+    .quiz-controls .info i {
+      color: #2a6b9e;
+      margin-right: 6px;
     }
 
-    .card h3 {
-      font-weight: 500;
-      font-size: 1.25rem;
-      letter-spacing: -0.2px;
-      color: #0d2b47;
-      display: flex;
+    .btn {
+      background: #1f5a88;
+      border: none;
+      color: white;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .card h3 .badge {
-      font-size: 0.65rem;
-      font-weight: 400;
+    .btn:hover {
+      background: #2a6b9e;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-secondary {
       background: rgba(42, 107, 158, 0.12);
-      padding: 0.1rem 0.7rem;
-      border-radius: 30px;
-      color: #1f5a88;
-      letter-spacing: 0.3px;
-      border: 1px solid rgba(42, 107, 158, 0.08);
+      color: #1f4970;
+      border: 1px solid rgba(42, 107, 158, 0.15);
     }
 
-    .card .desc {
-      font-size: 0.95rem;
-      font-weight: 350;
-      line-height: 1.5;
-      color: #1e3b5a;
-      margin-top: 0.6rem;
-      flex: 1;
+    .btn-secondary:hover {
+      background: rgba(42, 107, 158, 0.2);
     }
 
-    .card .desc i {
-      color: #2a6b9e;
-      margin-right: 4px;
-      opacity: 0.7;
+    .btn-success {
+      background: #1f7a5a;
     }
 
-    .card .tags {
-      margin-top: 1rem;
+    .btn-success:hover {
+      background: #2a8f6a;
+    }
+
+    /* question card */
+    .question-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 4px 16px rgba(0, 20, 40, 0.04);
+      transition: border 0.2s;
+    }
+
+    .question-card .q-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.6rem;
-    }
-
-    .card .tags span {
-      background: rgba(42, 107, 158, 0.06);
-      padding: 0.15rem 0.9rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      letter-spacing: 0.3px;
-      color: #1f4a72;
-      border: 1px solid rgba(42, 107, 158, 0.08);
-    }
-
-    .card .marker {
-      margin-top: 0.8rem;
-      font-size: 0.75rem;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.8rem;
       color: #3d6a93;
-      border-top: 1px solid rgba(0, 0, 0, 0.03);
-      padding-top: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card .marker i {
-      opacity: 0.5;
-      font-size: 0.7rem;
-    }
-
-    .sub-section {
-      margin-top: 0.5rem;
-      margin-bottom: 0.8rem;
-      font-weight: 400;
-      color: #1f4a72;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sub-section i {
-      color: #2a6b9e;
-      font-size: 1rem;
-      width: 1.6rem;
-      text-align: center;
-    }
-
-    .flex-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
       margin-bottom: 0.5rem;
     }
 
-    .flex-row .card {
-      flex: 1 1 200px;
+    .question-card .q-text {
+      font-size: 1.1rem;
+      font-weight: 450;
+      margin-bottom: 1rem;
+      color: #0d2b47;
     }
 
-    /* comparison cards (innate vs adaptive) */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.8rem;
-      margin-bottom: 1.5rem;
+    .question-card .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .compare-grid .card {
-      border-left: 5px solid transparent;
+    .question-card .options label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: background 0.1s;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
     }
 
-    .compare-grid .card.innate-card {
-      border-left-color: #4a8cba;
+    .question-card .options label:hover {
+      background: rgba(42, 107, 158, 0.04);
     }
 
-    .compare-grid .card.adaptive-card {
-      border-left-color: #c77d4a;
+    .question-card .options input[type="radio"] {
+      accent-color: #1f5a88;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
-    @media (max-width: 700px) {
-      .compare-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
+    .question-card .options label.correct {
+      background: rgba(31, 122, 90, 0.12);
+      border-color: #1f7a5a;
     }
 
-    /* utility */
-    .mt-1 { margin-top: 0.5rem; }
-    .mb-1 { margin-bottom: 0.5rem; }
+    .question-card .options label.wrong {
+      background: rgba(180, 60, 60, 0.10);
+      border-color: #b03a3a;
+    }
+
+    .question-card .options label.show-correct {
+      background: rgba(31, 122, 90, 0.08);
+      border-color: #1f7a5a;
+    }
+
+    .question-card .feedback {
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.02);
+      border-left: 3px solid #2a6b9e;
+      display: none;
+    }
+
+    .question-card .feedback.show {
+      display: block;
+    }
+
+    .question-card .feedback .correct-answer {
+      font-weight: 500;
+      color: #1f7a5a;
+    }
+
+    .question-card .feedback .explain {
+      color: #1f4970;
+      margin-top: 0.2rem;
+      font-size: 0.85rem;
+    }
+
+    /* results */
+    .results-box {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .results-box .score {
+      font-size: 2.2rem;
+      font-weight: 300;
+    }
+
+    .results-box .score strong {
+      font-weight: 500;
+      color: #1f5a88;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #3d6a93;
+      opacity: 0.6;
+      border-top: 1px solid rgba(42, 107, 158, 0.08);
+      padding-top: 1.5rem;
+    }
 
     @media (max-width: 640px) {
       .header {
@@ -275,22 +272,18 @@
       .header h1 {
         font-size: 1.5rem;
       }
-      .section-title {
-        font-size: 1.3rem;
+      .quiz-controls {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 1.2rem 1.2rem;
       }
-      .card-grid {
-        grid-template-columns: 1fr;
+      .question-card {
+        padding: 1.2rem 1.2rem;
       }
-    }
-
-    .footer-note {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #3d6a93;
-      opacity: 0.6;
-      border-top: 1px solid rgba(42, 107, 158, 0.08);
-      padding-top: 1.5rem;
+      .question-card .q-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -299,228 +292,441 @@
 
   <!-- header -->
   <div class="header">
-    <h1><i class="fas fa-shield-virus"></i> immuno<span style="font-weight:300;">study</span></h1>
-    <span class="sub"><i class="fas fa-graduation-cap"></i> college level · innate & adaptive · T/B cells · lymphoid organs</span>
+    <h1><i class="fas fa-flask"></i> immuno<span style="font-weight:300;">quiz</span></h1>
+    <span class="sub"><i class="fas fa-graduation-cap"></i> 20 questions · 5‑question quizzes</span>
   </div>
 
-  <!-- ========== INNATE vs ADAPTIVE ========== -->
-  <div class="section-title">
-    <i class="fas fa-balance-scale-left"></i> innate vs. adaptive immunity <small>two arms of the immune system</small>
-  </div>
-
-  <div class="compare-grid">
-    <!-- Innate card -->
-    <div class="card innate-card">
-      <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-      <h3>Innate immunity <span class="badge">non‑specific</span></h3>
-      <div class="desc">
-        <i class="fas fa-dot-circle"></i> First line of defense. Rapid response (minutes to hours). No immunological memory. Recognizes broad pathogen‑associated molecular patterns (PAMPs) via pattern‑recognition receptors (PRRs).
-      </div>
-      <div class="tags">
-        <span>fast</span><span>no memory</span><span>germline‑encoded</span><span>PRRs</span><span>physical barriers</span>
-      </div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> includes: skin, mucosa, phagocytes, NK cells, complement</div>
+  <!-- controls -->
+  <div class="quiz-controls">
+    <div class="info">
+      <i class="fas fa-dice"></i> <span id="quizStatus">Ready — click "New quiz" to start</span>
     </div>
-
-    <!-- Adaptive card -->
-    <div class="card adaptive-card">
-      <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-      <h3>Adaptive immunity <span class="badge">specific</span></h3>
-      <div class="desc">
-        <i class="fas fa-dot-circle"></i> Slower onset (days to weeks), but highly specific. Generates immunological memory. Relies on B cells (antibodies) and T cells (cellular immunity). Clonal selection and expansion.
-      </div>
-      <div class="tags">
-        <span>memory</span><span>specificity</span><span>somatic recombination</span><span>clonal expansion</span><span>MHC restriction</span>
-      </div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> includes: humoral (B cells) & cell‑mediated (T cells)</div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <button class="btn" id="newQuizBtn"><i class="fas fa-sync-alt"></i> New quiz</button>
+      <button class="btn btn-success" id="submitQuizBtn"><i class="fas fa-check"></i> Submit & show answers</button>
     </div>
   </div>
 
-  <!-- ==================== CELL TYPES ==================== -->
-  <div class="section-title">
-    <i class="fas fa-microscope"></i> cell types <small>innate & adaptive</small>
-  </div>
+  <!-- quiz container -->
+  <div id="quizContainer"></div>
 
-  <div class="card-grid">
-    <!-- macrophage -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-fan"></i></div>
-      <h3>Macrophage <span class="badge">innate</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Phagocytic “big eater” – engulfs pathogens, dead cells, and debris. Antigen-presenting cell (APC) that bridges innate and adaptive immunity.</div>
-      <div class="tags"><span>phagocytosis</span><span>APC</span><span>cytokine secretion</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> tissue-resident · derived from monocytes</div>
-    </div>
-
-    <!-- dendritic cell -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-tree"></i></div>
-      <h3>Dendritic cell <span class="badge">innate</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Professional APC with dendritic processes. Highly efficient at presenting antigens to naïve T cells, initiating adaptive responses.</div>
-      <div class="tags"><span>APC</span><span>MHC II</span><span>co‑stimulation</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> skin, mucosa, lymphoid organs</div>
-    </div>
-
-    <!-- neutrophil -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-biohazard"></i></div>
-      <h3>Neutrophil <span class="badge">innate</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Most abundant white blood cell. Rapid responders to infection; phagocytic and releases neutrophil extracellular traps (NETs).</div>
-      <div class="tags"><span>phagocytosis</span><span>granules</span><span>NETs</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> blood · short half‑life</div>
-    </div>
-
-    <!-- NK cell -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-skull-crossbones"></i></div>
-      <h3>NK cell <span class="badge">innate</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Natural killer cell. Kills virus‑infected cells and tumor cells without prior sensitization. Regulated by activating/inhibitory receptors.</div>
-      <div class="tags"><span>cytotoxicity</span><span>perforin</span><span>IFN‑γ</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> blood · spleen · liver</div>
-    </div>
-  </div>
-
-  <!-- ==================== T & B CELLS ==================== -->
-  <div class="section-title">
-    <i class="fas fa-vial"></i> T & B lymphocytes <small>adaptive immunity</small>
-  </div>
-
-  <!-- sub: T cells -->
-  <div class="sub-section"><i class="fas fa-bolt"></i> T cells</div>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-user-md"></i></div>
-      <h3>Helper T (Th) <span class="badge">CD4⁺</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Orchestrates immune responses. Recognizes antigens on MHC II. Secretes interleukins to activate B cells, macrophages, and cytotoxic T cells.</div>
-      <div class="tags"><span>Th1</span><span>Th2</span><span>Th17</span><span>Treg</span></div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> central role in humoral & cell‑mediated immunity</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-user-slash"></i></div>
-      <h3>Cytotoxic T (Tc) <span class="badge">CD8⁺</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Kills infected cells (viral, intracellular bacteria) and tumor cells. Recognizes antigen on MHC I. Releases perforin and granzymes.</div>
-      <div class="tags"><span>perforin</span><span>granzyme</span><span>FasL</span></div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> essential for viral clearance</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
-      <h3>Regulatory T (Treg) <span class="badge">CD4⁺CD25⁺</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Maintains immune tolerance and suppresses excessive immune responses. Expresses FoxP3. Secretes IL‑10 and TGF‑β.</div>
-      <div class="tags"><span>FoxP3</span><span>suppression</span><span>tolerance</span></div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> prevents autoimmunity</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-bolt"></i></div>
-      <h3>γδ T cell <span class="badge">unconventional</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> T‑cell receptor with γ and δ chains. Bridge innate and adaptive. Respond to stress molecules and lipids. Found in mucosa.</div>
-      <div class="tags"><span>mucosal</span><span>stress‑response</span><span>IL‑17</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> gut, skin, lungs</div>
-    </div>
-  </div>
-
-  <!-- sub: B cells -->
-  <div class="sub-section"><i class="fas fa-microbe"></i> B cells</div>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-droplet"></i></div>
-      <h3>B‑1 cell <span class="badge">innate‑like</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Produces natural IgM antibodies (low affinity, broad specificity). Located in pleural and peritoneal cavities. Minimal somatic hypermutation.</div>
-      <div class="tags"><span>natural antibody</span><span>IgM</span><span>TI antigens</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> peritoneal cavity</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-droplet"></i></div>
-      <h3>Follicular B‑2 <span class="badge">classical</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Conventional B cells in secondary lymphoid organs. Produce high‑affinity antibodies via germinal center reactions (affinity maturation, class switching).</div>
-      <div class="tags"><span>IgG, IgA, IgE</span><span>TD antigens</span><span>memory</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> lymph nodes · spleen · Peyer’s patches</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-droplet"></i></div>
-      <h3>Marginal zone B <span class="badge">innate‑like</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Rapid responders to blood‑borne pathogens. Low‑affinity IgM and IgG. Located in spleen marginal zone. Participate in T‑independent responses.</div>
-      <div class="tags"><span>spleen</span><span>IgM</span><span>TI‑2</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> splenic marginal zone</div>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-droplet"></i></div>
-      <h3>Plasma cell <span class="badge">effector</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Differentiated B cell that produces large quantities of antibodies (immunoglobulins). No longer expresses surface Ig or MHC II. Long‑lived in bone marrow.</div>
-      <div class="tags"><span>antibody factory</span><span>Ig secretion</span><span>memory</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> bone marrow · mucosa</div>
-    </div>
-  </div>
-
-  <!-- ==================== LYMPHOID ORGANS ==================== -->
-  <div class="section-title">
-    <i class="fas fa-map-signs"></i> lymphoid organs <small>primary & secondary</small>
-  </div>
-
-  <div class="card-grid">
-    <!-- bone marrow -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-bone"></i></div>
-      <h3>Bone marrow <span class="badge">primary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Hematopoietic stem cells give rise to all blood cells. B‑cell maturation occurs here. Site of plasma cell residence and antibody production.</div>
-      <div class="tags"><span>hematopoiesis</span><span>B‑cell maturation</span><span>stroma</span></div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> central for humoral immunity</div>
-    </div>
-
-    <!-- thymus -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-heart"></i></div>
-      <h3>Thymus <span class="badge">primary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Site of T‑cell maturation and selection (positive & negative). Cortical and medullary regions. Hassall’s corpuscles. Involutes with age.</div>
-      <div class="tags"><span>T‑cell education</span><span>positive selection</span><span>negative selection</span></div>
-      <div class="marker"><i class="fas fa-arrow-right"></i> essential for cell‑mediated immunity</div>
-    </div>
-
-    <!-- lymph nodes -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-circle-nodes"></i></div>
-      <h3>Lymph nodes <span class="badge">secondary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Filter lymph fluid. Contain B‑cell follicles, T‑cell zones, and germinal centers. Site of adaptive immune initiation and antigen presentation.</div>
-      <div class="tags"><span>follicles</span><span>germinal center</span><span>APC</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> cervical, axillary, inguinal, etc.</div>
-    </div>
-
-    <!-- spleen -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-filter"></i></div>
-      <h3>Spleen <span class="badge">secondary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Filters blood. Red pulp removes old RBCs; white pulp contains lymphoid tissue with marginal zone and periarteriolar lymphoid sheaths (PALS).</div>
-      <div class="tags"><span>white pulp</span><span>red pulp</span><span>marginal zone</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> left upper abdomen</div>
-    </div>
-
-    <!-- MALT / GALT -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-gut"></i></div>
-      <h3>MALT / GALT <span class="badge">secondary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Mucosa‑associated lymphoid tissue. Includes Peyer’s patches (intestine), tonsils, adenoids. First line of defense against mucosal pathogens.</div>
-      <div class="tags"><span>Peyer’s patches</span><span>tonsils</span><span>SIgA</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> gastrointestinal, respiratory, urogenital</div>
-    </div>
-
-    <!-- skin associated lymphoid tissue (SALT) -->
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-hand-sparkles"></i></div>
-      <h3>SALT <span class="badge">secondary</span></h3>
-      <div class="desc"><i class="fas fa-dot-circle"></i> Skin‑associated lymphoid tissue. Includes epidermal Langerhans cells (dendritic) and dermal T cells. Provides barrier immunity.</div>
-      <div class="tags"><span>Langerhans</span><span>dermal T</span><span>barrier</span></div>
-      <div class="marker"><i class="fas fa-map-pin"></i> epidermis / dermis</div>
-    </div>
+  <!-- results -->
+  <div id="resultsBox" class="results-box" style="display: none;">
+    <div class="score">Score: <strong id="scoreDisplay">0</strong> / 5</div>
+    <div style="margin-top: 0.4rem; font-size: 0.9rem; color: #1f4970;" id="resultMessage"></div>
   </div>
 
   <!-- footer -->
   <div class="footer-note">
-    <i class="fas fa-book-open"></i> college immunology · quick reference · T&nbsp;&amp;&nbsp;B subsets · lymphoid architecture
+    <i class="fas fa-book-open"></i> 20 questions drawn from the immunology study guide · answers shown after submit
   </div>
 </div>
+
+<script>
+  (function() {
+    // ---------- 20 QUESTIONS ----------
+    const questionBank = [
+      {
+        question: "Which of the following is a characteristic of innate immunity?",
+        options: [
+          "Immunological memory",
+          "Highly specific antigen recognition",
+          "Rapid response (minutes to hours)",
+          "Requires clonal selection"
+        ],
+        correct: 2,
+        explanation: "Innate immunity responds rapidly (minutes to hours) and lacks immunological memory. It recognizes broad PAMPs via PRRs."
+      },
+      {
+        question: "Which cell type is a professional antigen-presenting cell (APC) that bridges innate and adaptive immunity?",
+        options: [
+          "Neutrophil",
+          "Natural killer cell",
+          "Macrophage",
+          "Eosinophil"
+        ],
+        correct: 2,
+        explanation: "Macrophages are phagocytic APCs that present antigens to T cells, linking innate and adaptive responses."
+      },
+      {
+        question: "Where do B cells mature?",
+        options: [
+          "Thymus",
+          "Bone marrow",
+          "Lymph nodes",
+          "Spleen"
+        ],
+        correct: 1,
+        explanation: "B cells mature in the bone marrow. T cells mature in the thymus."
+      },
+      {
+        question: "Which T cell subset expresses CD4 and orchestrates immune responses by secreting cytokines?",
+        options: [
+          "Cytotoxic T cell (CD8+)",
+          "Regulatory T cell (Treg)",
+          "Helper T cell (Th)",
+          "γδ T cell"
+        ],
+        correct: 2,
+        explanation: "Helper T cells (CD4+) secrete interleukins and coordinate both humoral and cell-mediated immunity."
+      },
+      {
+        question: "What is the primary function of cytotoxic T cells (CD8+)?",
+        options: [
+          "Produce antibodies",
+          "Suppress immune responses",
+          "Kill infected or tumor cells",
+          "Present antigens"
+        ],
+        correct: 2,
+        explanation: "Cytotoxic T cells kill virus-infected cells and tumor cells using perforin and granzymes."
+      },
+      {
+        question: "Which lymphoid organ is the site of T cell maturation and selection?",
+        options: [
+          "Bone marrow",
+          "Spleen",
+          "Thymus",
+          "Lymph node"
+        ],
+        correct: 2,
+        explanation: "The thymus is the primary lymphoid organ where T cells undergo positive and negative selection."
+      },
+      {
+        question: "Which type of B cell produces natural IgM antibodies with low affinity and broad specificity?",
+        options: [
+          "Follicular B-2",
+          "Marginal zone B",
+          "Plasma cell",
+          "B-1 cell"
+        ],
+        correct: 3,
+        explanation: "B-1 cells produce natural IgM antibodies and are found in the peritoneal and pleural cavities."
+      },
+      {
+        question: "What is the role of regulatory T cells (Tregs)?",
+        options: [
+          "Kill infected cells",
+          "Maintain immune tolerance and suppress excessive responses",
+          "Produce antibodies",
+          "Activate macrophages"
+        ],
+        correct: 1,
+        explanation: "Tregs (CD4+CD25+FoxP3+) maintain immune tolerance and prevent autoimmunity by suppressing immune responses."
+      },
+      {
+        question: "Which of the following is a secondary lymphoid organ?",
+        options: [
+          "Bone marrow",
+          "Thymus",
+          "Spleen",
+          "Both bone marrow and thymus"
+        ],
+        correct: 2,
+        explanation: "The spleen is a secondary lymphoid organ. Bone marrow and thymus are primary lymphoid organs."
+      },
+      {
+        question: "What molecule do dendritic cells use to present antigens to CD4+ T cells?",
+        options: [
+          "MHC class I",
+          "MHC class II",
+          "CD8",
+          "Fc receptor"
+        ],
+        correct: 1,
+        explanation: "Dendritic cells present antigens on MHC class II to activate CD4+ helper T cells."
+      },
+      {
+        question: "Which of the following is NOT a characteristic of adaptive immunity?",
+        options: [
+          "Immunological memory",
+          "Specificity",
+          "Clonal expansion",
+          "Immediate response (minutes)"
+        ],
+        correct: 3,
+        explanation: "Adaptive immunity takes days to weeks to respond. Immediate response is a feature of innate immunity."
+      },
+      {
+        question: "Where are Peyer's patches located?",
+        options: [
+          "Skin",
+          "Intestine (mucosa)",
+          "Lymph nodes",
+          "Spleen"
+        ],
+        correct: 1,
+        explanation: "Peyer's patches are clusters of lymphoid tissue in the intestinal mucosa, part of GALT (gut-associated lymphoid tissue)."
+      },
+      {
+        question: "What is the function of the spleen's red pulp?",
+        options: [
+          "T cell activation",
+          "B cell maturation",
+          "Removal of old red blood cells",
+          "Antigen presentation"
+        ],
+        correct: 2,
+        explanation: "The red pulp of the spleen filters blood and removes old or damaged red blood cells."
+        },
+      {
+        question: "Which antibody is produced by plasma cells?",
+        options: [
+          "Cytokines",
+          "Immunoglobulins (antibodies)",
+          "Perforin",
+          "Complement proteins"
+        ],
+        correct: 1,
+        explanation: "Plasma cells are differentiated B cells that produce large quantities of antibodies (immunoglobulins)."
+      },
+      {
+        question: "What is the main function of neutrophils?",
+        options: [
+          "Antigen presentation",
+          "Phagocytosis and release of NETs",
+          "Antibody production",
+          "Memory response"
+        ],
+        correct: 1,
+        explanation: "Neutrophils are rapid phagocytes that engulf pathogens and release neutrophil extracellular traps (NETs)."
+      },
+      {
+        question: "Which T cell subset is known as 'unconventional' and bridges innate and adaptive immunity?",
+        options: [
+          "Helper T cell",
+          "Cytotoxic T cell",
+          "γδ T cell",
+          "Regulatory T cell"
+        ],
+        correct: 2,
+        explanation: "γδ T cells have a unique T-cell receptor and respond to stress molecules, bridging innate and adaptive responses."
+      },
+      {
+        question: "What is the germinal center in lymph nodes?",
+        options: [
+          "Site of T cell maturation",
+          "Site of B cell proliferation and affinity maturation",
+          "Site of red blood cell removal",
+          "Site of complement activation"
+        ],
+        correct: 1,
+        explanation: "Germinal centers are sites within lymph nodes and spleen where B cells undergo proliferation, somatic hypermutation, and affinity maturation."
+      },
+      {
+        question: "Which of the following is a pathogen-associated molecular pattern (PAMP)?",
+        options: [
+          "MHC molecule",
+          "Lipopolysaccharide (LPS)",
+          "Immunoglobulin",
+          "T-cell receptor"
+        ],
+        correct: 1,
+        explanation: "LPS is a PAMP recognized by TLRs on innate immune cells. PAMPs are broad molecular motifs shared by pathogens."
+      },
+      {
+        question: "What is the primary function of NK cells?",
+        options: [
+          "Antigen presentation",
+          "Killing virus-infected and tumor cells without prior sensitization",
+          "Antibody production",
+          "Suppressing immune responses"
+        ],
+        correct: 1,
+        explanation: "Natural killer (NK) cells kill infected or tumor cells using perforin and granzymes, without prior sensitization."
+      },
+      {
+        question: "What does SALT stand for in immunology?",
+        options: [
+          "Skin-associated lymphoid tissue",
+          "Systemic adaptive lymphoid tissue",
+          "Subcutaneous antibody lymphocyte tissue",
+          "Secondary antigen lymphoid tissue"
+        ],
+        correct: 0,
+        explanation: "SALT = Skin-associated lymphoid tissue, which includes Langerhans cells and dermal T cells providing barrier immunity."
+      }
+    ];
+
+    // ---------- STATE ----------
+    let currentQuestions = [];       // array of 5 question objects (with shuffled options)
+    let currentAnswers = [];        // user selected index (or null)
+    let submitted = false;
+
+    const quizContainer = document.getElementById('quizContainer');
+    const resultsBox = document.getElementById('resultsBox');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const resultMessage = document.getElementById('resultMessage');
+    const quizStatus = document.getElementById('quizStatus');
+
+    // ---------- HELPERS ----------
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // pick 5 random questions from bank, shuffle options
+    function generateQuiz() {
+      const shuffledBank = shuffleArray([...questionBank]);
+      const selected = shuffledBank.slice(0, 5);
+      // for each question, shuffle options but keep track of correct index
+      return selected.map(q => {
+        const optionObjects = q.options.map((text, idx) => ({ text, idx }));
+        const shuffledOptions = shuffleArray([...optionObjects]);
+        // find new index of correct answer
+        const correctText = q.options[q.correct];
+        const newCorrectIdx = shuffledOptions.findIndex(o => o.text === correctText);
+        return {
+          ...q,
+          options: shuffledOptions.map(o => o.text),
+          correct: newCorrectIdx,
+          originalCorrect: q.correct // keep for reference
+        };
+      });
+    }
+
+    // render quiz
+    function renderQuiz(questions) {
+      if (!questions || questions.length === 0) {
+        quizContainer.innerHTML = `<div style="text-align:center; padding:2rem; color:#3d6a93;">Click "New quiz" to generate 5 questions.</div>`;
+        return;
+      }
+
+      let html = '';
+      questions.forEach((q, qIdx) => {
+        const userChoice = currentAnswers[qIdx] !== undefined ? currentAnswers[qIdx] : null;
+        const isSubmitted = submitted;
+
+        html += `<div class="question-card" data-qidx="${qIdx}">`;
+        html += `<div class="q-header"><span>Question ${qIdx+1} of 5</span><span style="opacity:0.5;">${qIdx+1}/5</span></div>`;
+        html += `<div class="q-text">${q.question}</div>`;
+        html += `<div class="options">`;
+
+        q.options.forEach((opt, optIdx) => {
+          let labelClass = '';
+          let showCorrect = false;
+          let showWrong = false;
+
+          if (isSubmitted) {
+            if (optIdx === q.correct) {
+              labelClass = 'show-correct'; // highlight correct answer
+            }
+            if (userChoice === optIdx && userChoice !== q.correct) {
+              labelClass = 'wrong'; // user picked wrong
+            }
+            if (userChoice === optIdx && userChoice === q.correct) {
+              labelClass = 'correct';
+            }
+          }
+
+          const checked = (userChoice === optIdx) ? 'checked' : '';
+          const disabled = isSubmitted ? 'disabled' : '';
+
+          html += `<label class="${labelClass}">`;
+          html += `<input type="radio" name="q${qIdx}" value="${optIdx}" ${checked} ${disabled}>`;
+          html += opt;
+          html += `</label>`;
+        });
+
+        html += `</div>`; // end options
+
+        // feedback
+        let feedbackClass = 'feedback';
+        if (isSubmitted) feedbackClass += ' show';
+        html += `<div class="${feedbackClass}">`;
+        if (isSubmitted) {
+          const isCorrect = (userChoice === q.correct);
+          html += `<div class="correct-answer">${isCorrect ? '✅ Correct!' : '❌ Incorrect.'}</div>`;
+          html += `<div class="explain"><i class="fas fa-info-circle"></i> ${q.explanation}</div>`;
+        } else {
+          html += `<div style="color:#3d6a93;"><i class="fas fa-lightbulb"></i> Submit to see answer & explanation.</div>`;
+        }
+        html += `</div>`;
+        html += `</div>`; // end question-card
+      });
+
+      quizContainer.innerHTML = html;
+
+      // attach event listeners to radio buttons (only if not submitted)
+      if (!submitted) {
+        document.querySelectorAll('.question-card input[type="radio"]').forEach(radio => {
+          radio.addEventListener('change', function() {
+            const qIdx = parseInt(this.closest('.question-card').dataset.qidx);
+            const val = parseInt(this.value);
+            currentAnswers[qIdx] = val;
+          });
+        });
+      }
+    }
+
+    // update score & results
+    function showResults() {
+      let correctCount = 0;
+      let total = currentQuestions.length;
+      for (let i = 0; i < total; i++) {
+        if (currentAnswers[i] === currentQuestions[i].correct) {
+          correctCount++;
+        }
+      }
+      scoreDisplay.textContent = correctCount;
+      const pct = Math.round((correctCount/total)*100);
+      let msg = '';
+      if (pct === 100) msg = '🌟 Perfect! Outstanding!';
+      else if (pct >= 80) msg = '👏 Great job!';
+      else if (pct >= 60) msg = '💪 Good effort, keep reviewing!';
+      else msg = '📖 Review the study guide and try again.';
+      resultMessage.textContent = msg;
+      resultsBox.style.display = 'block';
+      quizStatus.innerHTML = `<i class="fas fa-check-circle" style="color:#1f7a5a;"></i> Quiz completed — ${correctCount}/${total} correct`;
+    }
+
+    // reset quiz state
+    function resetQuiz() {
+      submitted = false;
+      currentAnswers = new Array(5).fill(null);
+      resultsBox.style.display = 'none';
+      quizStatus.innerHTML = 'Ready — click "New quiz" to start';
+    }
+
+    // new quiz
+    function newQuiz() {
+      resetQuiz();
+      currentQuestions = generateQuiz();
+      renderQuiz(currentQuestions);
+      quizStatus.innerHTML = `<i class="fas fa-dice"></i> 5 questions loaded — select answers then submit.`;
+    }
+
+    // submit quiz
+    function submitQuiz() {
+      if (!currentQuestions || currentQuestions.length === 0) {
+        alert('Please generate a quiz first (click "New quiz").');
+        return;
+      }
+
+      // check if all answered
+      const allAnswered = currentQuestions.every((_, idx) => currentAnswers[idx] !== null && currentAnswers[idx] !== undefined);
+      if (!allAnswered) {
+        alert('Please answer all 5 questions before submitting.');
+        return;
+      }
+
+      submitted = true;
+      renderQuiz(currentQuestions);
+      showResults();
+    }
+
+    // ---------- EVENT BINDING ----------
+    document.getElementById('newQuizBtn').addEventListener('click', newQuiz);
+    document.getElementById('submitQuizBtn').addEventListener('click', submitQuiz);
+
+    // ---------- INIT ----------
+    // load with a default quiz
+    newQuiz();
+
+  })();
+</script>
 </body>
 </html>
